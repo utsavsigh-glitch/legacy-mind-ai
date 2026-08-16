@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Uploaded/generated runtime data
+backend/uploads/
+backend/workspaces/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Dependencies
+node_modules/
+backend/.venv/
+frontend/node_modules/
+
+# Environment variables
+.env
+backend/.env
+frontend/.env
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Generated/uploads
+backend/uploads/*
+backend/workspaces/*
+uploads/
+workspaces/
+
+# Build files
+frontend/dist/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
