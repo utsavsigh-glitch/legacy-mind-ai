@@ -21,6 +21,8 @@ function Metric({ label, value, accent = "" }) {
   );
 }
 
+const API_BASE = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? "https://legacy-mind-ai.onrender.com" : "");
+
 export default function App() {
   const [file, setFile] = useState(null);
   const [data, setData] = useState(null);
@@ -37,7 +39,7 @@ export default function App() {
     form.append("file", file);
 
     try {
-      const response = await fetch("/api/analyze", { method: "POST", body: form });
+      const response = await fetch(`${API_BASE}/api/analyze`, { method: "POST", body: form });
       const raw = await response.text();
       let json = {};
       try { json = raw ? JSON.parse(raw) : {}; } catch { json = {}; }
@@ -163,6 +165,12 @@ export default function App() {
                 <div className="result-title"><span>DOCUMENTATION</span><b>RECOVERED KNOWLEDGE</b></div>
                 <pre>{data.documentation}</pre>
               </div>
+              {data.ai_analysis && data.ai_analysis.status === "success" && (
+                <div className="result-panel wide">
+                  <div className="result-title"><span>AI DEEP SCAN</span><b>{data.ai_analysis.model.toUpperCase()} INTELLIGENCE</b></div>
+                  <pre>{data.ai_analysis.analysis}</pre>
+                </div>
+              )}
               <div className="result-panel wide verification-panel">
                 <div className="result-title"><span>VERIFICATION GATE</span><b>RELEASE SAFETY</b></div>
                 <div className={data.verification.status === "PASS" ? "pass" : "review"}>{data.verification.status}</div>
