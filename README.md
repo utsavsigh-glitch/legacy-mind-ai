@@ -52,6 +52,7 @@ cd backend
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
+cp ../.env.example .env   # Or create .env and add GROQ_API_KEY=your_key
 uvicorn app.main:app --reload
 ```
 
